@@ -53,5 +53,6 @@ class Bird {
         let bird = document.querySelector(".bird")
         let pTag = document.createElement("p")
         pTag.innerText = this.name
+        bird.appendChild(pTag)
     }
 }
