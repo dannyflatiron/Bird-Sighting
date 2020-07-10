@@ -13,14 +13,14 @@ class Bird {
     static createBird() {
         // this caputes input from the user and preserves it in the database
         // statis methods are not callable on instances of the class only on the class itself
+
+        // querySelector returns first instance 
+        // classSelector returns an array 
         let birdForm = document.querySelector(".new-bird-form")
         classForm.addEventListener("submit", function(event) {
             event.preventDefault()
             
-        })
-    
-
-    // captures form data
+                // captures form data
     let formData = {
         name: e.target[0].value,
         species: e.target[0].value 
@@ -39,5 +39,19 @@ class Bird {
     }
 
     fetch("http://locahost:3000/birds", configObj)
+        .then(response => response.json()) 
+        })
+    
+
+
+    }
+
+    // method to add a Bird instance from User submitted data to DOM
+    // certain HTML element (p tag) is being dynamically generated to hold Bird's name
+    // then p tag is being appended to appropriate div container
+    addBirdToDom() {
+        let bird = document.querySelector(".bird")
+        let pTag = document.createElement("p")
+        pTag.innerText = this.name
     }
 }
