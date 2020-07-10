@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-
+    Bird.createBird()
 })
 
 class Bird {
@@ -17,13 +17,13 @@ class Bird {
         // querySelector returns first instance 
         // classSelector returns an array 
         let birdForm = document.querySelector(".new-bird-form")
-        classForm.addEventListener("submit", function(event) {
+        birdForm.addEventListener("submit", function(event) {
             event.preventDefault()
             
                 // captures form data
     let formData = {
-        name: e.target[0].value,
-        species: e.target[0].value 
+        name: event.target[0].value,
+        species: event.target[1].value 
     }
 
     // configObj will tell fetch that this is a POST request and stringify data
@@ -38,8 +38,13 @@ class Bird {
             body: JSON.stringify(formData)
     }
 
-    fetch("http://locahost:3000/birds", configObj)
+    fetch("http://localhost:3000/birds", configObj)
         .then(response => response.json()) 
+        .then(data => {
+            let newBird = new Bird(data)
+            console.log("data", data)
+            newBird.addBirdToDom()
+        })
         })
     
 
@@ -51,8 +56,11 @@ class Bird {
     // then p tag is being appended to appropriate div container
     addBirdToDom() {
         let bird = document.querySelector(".bird")
-        let pTag = document.createElement("p")
-        pTag.innerText = this.name
-        bird.appendChild(pTag)
+        let pTagName = document.createElement("p")
+        let pTagSpecies = document.createElement("p")
+        pTagName.innerText = this.name
+        pTagSpecies.innerText = this.species
+        bird.appendChild(pTagName)
+        bird.appendChild(pTagSpecies)
     }
 }
