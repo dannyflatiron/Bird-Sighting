@@ -7,10 +7,10 @@ class BirdsController < ApplicationController
 
     def create
         bird = Bird.create(bird_params)
-        if bird.valid?
+        if bird.save
             render json: bird
         else
-            render json: {error: "Bird not valid"}
+            render json: {error: "Please submit name and species for bird"}
         end
     end
 
