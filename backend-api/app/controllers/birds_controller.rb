@@ -10,7 +10,7 @@ class BirdsController < ApplicationController
         if bird.valid?
             render json: bird
         else
-            render json: {error: "Bird doesn't exist"}
+            render json: {error: "Bird not valid"}
         end
     end
 
