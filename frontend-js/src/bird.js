@@ -42,8 +42,20 @@ class Bird {
         fetch("http://localhost:3000/birds", configObj)
             .then(response => response.json()) 
             .then(data => {
-                let newBird = new Bird(data)
-                newBird.addBirdToDom()
+                // console.log("data", data.error)
+                if (data.error) {
+                    const errorDiv = document.querySelector(".main")
+                    let pErrorMessage = document.createElement("p")
+                    pErrorMessage.setAttribute("class", "error-message")
+                    pErrorMessage.innerText = data.error
+                    errorDiv.appendChild(pErrorMessage)
+                    setTimeout(function(){
+                        document.querySelector(".error-message").innerText = ""
+                    }, 3000);
+                } else {
+                    let newBird = new Bird(data)
+                    newBird.addBirdToDom()
+                }
             })
             // clears input field 
             event.target[0].value = ""
