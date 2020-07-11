@@ -9,10 +9,10 @@ class SightingsController < ApplicationController
 
     def create
         sighting = Sighting.create(sightings_params)
-        if sighting.valid?
+        if sighting.save
             render json: sighting
         else
-            render json: {error: "Sighting not valid"}
+            render json: {message: sighting.errors.messages[:invalid]}
         end
     end
 
