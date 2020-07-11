@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     Bird.createBird()
+    Bird.getAllBirds()
 })
 
 class Bird {
@@ -42,7 +43,6 @@ class Bird {
         .then(response => response.json()) 
         .then(data => {
             let newBird = new Bird(data)
-            console.log("data", data)
             newBird.addBirdToDom()
         })
         })
@@ -62,5 +62,14 @@ class Bird {
         pTagSpecies.innerText = this.species
         bird.appendChild(pTagName)
         bird.appendChild(pTagSpecies)
+    }
+
+    static getAllBirds() {
+        // get all birds from api
+        // add birds to DOM
+        fetch("http://localhost:3000/birds")
+        .then(response => response.json()) 
+        .then(data => console.log(data)) 
+
     }
 }
