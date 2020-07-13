@@ -70,7 +70,7 @@ class Bird {
     // certain HTML element (p tag) is being dynamically generated to hold Bird's name
     // then p tag is being appended to appropriate div container
     addBirdToDom() {
-        let bird = document.querySelector(".bird")
+        let main = document.querySelector("main")
         // let pTagName = document.createElement("p")
         // let pTagSpecies = document.createElement("p")
         // pTagName.innerText = this.name
@@ -95,7 +95,7 @@ class Bird {
         div.appendChild(pSpecies)
         div.appendChild(button)
         div.appendChild(ul)
-        bird.appendChild(div)
+        main.appendChild(div)
     }
 
     static getAllBirds() {
