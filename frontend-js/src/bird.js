@@ -9,6 +9,7 @@ class Bird {
         this.name = bird.name; 
         this.species = bird.species;
         this.sightings = bird.sightings;
+        this.sightingDates = []
     }
 
     // static createBird() {
@@ -71,23 +72,13 @@ class Bird {
     // then p tag is being appended to appropriate div container
     addBirdToDom() {
         let main = document.querySelector("main")
+        let dates = this.sightings.map(sighting => sighting.date)
         // let pTagName = document.createElement("p")
         // let pTagSpecies = document.createElement("p")
         // pTagName.innerText = this.name
         // pTagSpecies.innerText = this.species
         // bird.appendChild(pTagName)
         // bird.appendChild(pTagSpecies)
-
-        let sightingsDate = this.sightings.forEach(sighting => {
-            
-            if (sighting.date === false) {
-                return "No Records"
-            } else {
-                return sighting.date
-            }
-        })
-        console.log(sightingsDate)
-        // let sightings = sightingsDate.toString()
         
         const div = document.createElement("div")
         const pName = document.createElement("p")
@@ -100,7 +91,7 @@ class Bird {
         div.setAttribute("data-id", this.id)
         pName.innerText = `Name: ${this.name}`
         pSpecies.innerText = `Species: ${this.species}`
-        pSightings.innerHTML = `Sightings: ${this.sightings[0].date}`
+        pSightings.innerHTML = `Sightings: ${dates}`
         button.setAttribute("data-bird-id", this.id)
         button.innerText = "Add Sighting"
 
@@ -121,6 +112,9 @@ class Bird {
             // data is an array have to use map to access each element
             data.forEach(bird => {
                 let newBird = new Bird(bird)
+                let sightings = newBird.sightings
+                let dates = sightings.map(sighting => sighting.date)
+                this.sightingDates = dates
                 newBird.addBirdToDom() 
             })
         })
