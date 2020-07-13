@@ -1,3 +1,4 @@
 class SightingSerializer < ActiveModel::Serializer
-  attributes :id, :date
+  attributes :id, :date, :bird_id
+  belongs_to :bird
 end
