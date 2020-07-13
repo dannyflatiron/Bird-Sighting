@@ -78,6 +78,17 @@ class Bird {
         // bird.appendChild(pTagName)
         // bird.appendChild(pTagSpecies)
 
+        let sightingsDate = this.sightings.forEach(sighting => {
+            
+            if (sighting.date === false) {
+                return "No Records"
+            } else {
+                return sighting.date
+            }
+        })
+        console.log(sightingsDate)
+        // let sightings = sightingsDate.toString()
+        
         const div = document.createElement("div")
         const pName = document.createElement("p")
         const pSpecies = document.createElement("p")
@@ -89,7 +100,7 @@ class Bird {
         div.setAttribute("data-id", this.id)
         pName.innerText = `Name: ${this.name}`
         pSpecies.innerText = `Species: ${this.species}`
-        pSightings.innerText = `Sightings: ${this.sightings.forEach(sighting =>  console.log(sighting.date))}`
+        pSightings.innerHTML = `Sightings: ${this.sightings[0].date}`
         button.setAttribute("data-bird-id", this.id)
         button.innerText = "Add Sighting"
 
