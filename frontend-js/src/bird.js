@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 class Bird {
     constructor(bird) {
+        console.log("bird", bird)
         this.id = bird.id;
         this.name = bird.name; 
         this.species = bird.species;
@@ -86,8 +87,8 @@ class Bird {
 
         div.setAttribute("class", "card")
         div.setAttribute("data-id", this.id)
-        pName.innerText = this.name
-        pSpecies.innerText = this.species
+        pName.innerText = `Name: ${this.name}`
+        pSpecies.innerText = `Species: ${this.species}`
         button.setAttribute("data-bird-id", this.id)
         button.innerText = "Add Sighting"
 
@@ -104,7 +105,6 @@ class Bird {
         fetch("http://localhost:3000/birds")
         .then(response => response.json()) 
         .then(data => {
-            console.log("data", data)
             // data is an array have to use map to access each element
             data.forEach(bird => {
                 let newBird = new Bird(bird)
