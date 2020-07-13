@@ -5,11 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 class Bird {
     constructor(bird) {
-        console.log("bird", bird)
         this.id = bird.id;
         this.name = bird.name; 
         this.species = bird.species;
-        this.sightings = [];
+        this.sightings = bird.sightings;
     }
 
     // static createBird() {
@@ -82,6 +81,7 @@ class Bird {
         const div = document.createElement("div")
         const pName = document.createElement("p")
         const pSpecies = document.createElement("p")
+        const pSightings = document.createElement("p")
         const button = document.createElement("button")
         const ul = document.createElement("ul")
 
@@ -89,11 +89,13 @@ class Bird {
         div.setAttribute("data-id", this.id)
         pName.innerText = `Name: ${this.name}`
         pSpecies.innerText = `Species: ${this.species}`
+        pSightings.innerText = `Sightings: ${this.sightings.forEach(sighting =>  console.log(sighting.date))}`
         button.setAttribute("data-bird-id", this.id)
         button.innerText = "Add Sighting"
 
         div.appendChild(pName)
         div.appendChild(pSpecies)
+        div.appendChild(pSightings)
         div.appendChild(button)
         div.appendChild(ul)
         main.appendChild(div)
