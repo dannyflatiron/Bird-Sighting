@@ -11,7 +11,6 @@ class Bird {
         this.sightings = bird.sightings;
         this.sightingDates = []
     }
-
     // static createBird() {
     //         // this caputes input from the user and preserves it in the database
     //         // statis methods are not callable on instances of the class only on the class itself
@@ -73,6 +72,8 @@ class Bird {
     addBirdToDom() {
         let main = document.querySelector("main")
         let dates = this.sightings.map(sighting => sighting.date)
+        console.log("date", moment().format(dates[0]))
+
         // let pTagName = document.createElement("p")
         // let pTagSpecies = document.createElement("p")
         // pTagName.innerText = this.name
@@ -91,7 +92,12 @@ class Bird {
         div.setAttribute("data-id", this.id)
         pName.innerText = `Name: ${this.name}`
         pSpecies.innerText = `Species: ${this.species}`
-        pSightings.innerHTML = `Sightings: ${dates}`
+        pSightings.innerHTML 
+        if (dates.length === 0) {
+            pSightings.innerHTML = "Sightings Not Found"
+        } else {
+            pSightings.innerHTML = `Sightings: ${dates}`
+        }
         button.setAttribute("data-bird-id", this.id)
         button.innerText = "Add Sighting"
 
