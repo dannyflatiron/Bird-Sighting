@@ -9,7 +9,7 @@ class Bird {
         this.name = bird.name; 
         this.species = bird.species;
         this.sightings = bird.sightings;
-        this.sightingDates = []
+        // this.sightingDates = []
     }
     // static createBird() {
     //         // this caputes input from the user and preserves it in the database
@@ -71,9 +71,8 @@ class Bird {
     // then p tag is being appended to appropriate div container
     addBirdToDom() {
         let main = document.querySelector("main")
+        let sightings = this.sightings
         let dates = this.sightings.map(sighting => sighting.date)
-        console.log("date", moment().format(dates[0]))
-
         // let pTagName = document.createElement("p")
         // let pTagSpecies = document.createElement("p")
         // pTagName.innerText = this.name
@@ -96,10 +95,11 @@ class Bird {
         if (dates.length === 0) {
             pSightings.innerHTML = "Sightings Not Found"
         } else {
-            pSightings.innerHTML = `Sightings: ${dates}`
+            pSightings.innerHTML = dates.join(', ')
         }
         button.setAttribute("data-bird-id", this.id)
         button.innerText = "Add Sighting"
+        ul.setAttribute("class", "sightings")
 
         div.appendChild(pName)
         div.appendChild(pSpecies)
@@ -107,6 +107,8 @@ class Bird {
         div.appendChild(button)
         div.appendChild(ul)
         main.appendChild(div)
+
+        this.renderBirdSightigns(sightings)
     }
 
     static getAllBirds() {
@@ -124,5 +126,23 @@ class Bird {
                 newBird.addBirdToDom() 
             })
         })
+    }
+
+    renderBirdSightigns(sightings) {
+        // let dates = sightings.map(sighting => sighting.date)
+        // console.log(dates)
+
+        // const ul = document.querySelector(".sightings")
+        // const li = document.createElement("li")
+        // const button = document.createElement("button")
+
+        // li.innerHTML
+        // if (dates.length === 0) {
+        //     pSightings.innerHTML = "Sightings Not Found"
+        // } else {
+        //     pSightings.innerHTML = `Sightings: ${dates}`
+        // }
+        // button.setAttribute("button", "Remove Sighting")
+        // button.setAttribute("data-sighting-id")
     }
 }
