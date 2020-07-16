@@ -24,7 +24,7 @@ body {
   }
   
   div.card {
-    background-color: #eeeeee;
+    background-color: #1b1818;
     height: auto;
     width: 300px;
     box-shadow: 10px 10px grey;
@@ -34,7 +34,7 @@ body {
   
   p {
     font-size: 1.5em;
-    color: black;
+    color: white;
     font-family: Helvetica;
   }
   
@@ -42,6 +42,7 @@ body {
     font-size: 1.05em;
     list-style: none;
     padding-right: 20px;
+    color: white;
   }
   
   button {
@@ -66,4 +67,20 @@ body {
     main {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+  }
+
+  ul.sightingsList {
+    font-size: 1.05em;
+    list-style: none;
+    padding-right: 20px;
+
+  }
+
+  .formContainer {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .sightingForm {
+    z-index: 2;
   }
