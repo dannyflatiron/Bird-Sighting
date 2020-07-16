@@ -18,7 +18,7 @@ class SightingsController < ApplicationController
         # else
         #     render json: {message: sighting.errors.messages[:invalid]}
         # end
-        bird = Bird.find_by(id: params[:sighting][:bird_id])
+        bird = Bird.find_by(id: params[:bird_id])
         bird.sightings.build(sightings_params)
         sighting = bird.sightings.last
         render json: bird.save ? bird : {message: sighting.errors.messages[:invalid]}
