@@ -11,7 +11,7 @@ class Sighting{
         const li = document.createElement("li")
         const button = document.createElement("button")
 
-        li.setAttribute("id", this.id)
+        // li.setAttribute("id", this.id)
         li.innerHTML = `Sightings: ${this.date}`
         button.setAttribute("class", "remove")
         button.setAttribute("data-sighting-id", this.id) 
@@ -21,30 +21,35 @@ class Sighting{
         ul.appendChild(li)
     }
 
-    static newSightingForm(bird) {
-        // console.log("sighting", bird_id)
+    static newSightingForm(bird, birdSightings) {
+        console.log("birdSightings", birdSightings)
+        console.log("bird", bird)
+        const container = document.querySelector(".container")
         let div = document.querySelector(".card")
+        const ul = document.getElementById(`${bird.id}`)
         let button = document.querySelector("data-bird-id")
-        const ul = document.querySelector(".sightingsList")
+        // how do I make sightingsList dynamic?
+        // class.sightingList#
+        // const ul = document.querySelector(".sightingsList")
 
-
+        let birdId = bird.id
         let form = document.createElement("form")
-        form.setAttribute("method", "post")
         form.setAttribute("class", "sightingForm")
+        
 
-        let inputDate = document.createElement("type", "date")
-
-
-        // let form = `<form id ="new-sighting-form>
-        // <label>What's your problem?:</label>
-        // <br><br><br><br><br>
-        // <label>What's your problem?:</label>
-        // <input type="date" value="2017-06-01">
-        // <input type="submit"/>
-        // </form>`
+        let inputDate = document.createElement("input")
+        let hiddenTag = document.createElement("input")
+        let submit = document.createElement("input")
+        hiddenTag.type = "hidden"
+        hiddenTag.value = `${birdId}`
+        inputDate.type = "date"
+        submit.type = "submit"
 
         form.appendChild(inputDate)
+        form.appendChild(hiddenTag)
+        form.appendChild(submit)
         ul.appendChild(form)
-        div.appendChild(ul)
+
+        
     }
 }
