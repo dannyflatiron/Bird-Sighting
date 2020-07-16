@@ -39,9 +39,12 @@ class Bird {
 
         div.setAttribute("class", "card")
         div.setAttribute("data-id", this.id)
+        ul.setAttribute("class", "sightingsList")
+        ul.setAttribute("id", this.id)
+        button.setAttribute("data-bird-id", this.id)
+
         pName.innerText = `Name: ${this.name}`
         pSpecies.innerText = `Species: ${this.species}`
-        button.setAttribute("data-bird-id", this.id)
         button.innerText = "Add Sighting"
 
         div.appendChild(pName)
@@ -55,7 +58,13 @@ class Bird {
                 let newSighting = new Sighting(sighting)
                 newSighting.renderBirdSightings()
             })
-        }    
+        }   
+        // button.addEventListener("click", function() {
+        //     Sighting.newSightingForm(this.id)
+            
+        // })
+        button.addEventListener("click", Sighting.newSightingForm(this))
+
     }
 
 
