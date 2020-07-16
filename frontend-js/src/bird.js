@@ -58,12 +58,11 @@ class Bird {
                 let newSighting = new Sighting(sighting)
                 newSighting.renderBirdSightings()
             })
-        }   
-        // button.addEventListener("click", function() {
-        //     Sighting.newSightingForm(this.id)
-            
-        // })
-        button.addEventListener("click", Sighting.newSightingForm(this))
+        }  
+        
+        button.addEventListener("click", () => {
+            Sighting.newSightingForm(this, this.sightings)
+        })
 
     }
 
