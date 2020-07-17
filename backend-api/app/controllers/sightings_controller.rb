@@ -24,6 +24,11 @@ class SightingsController < ApplicationController
         render json: bird.save ? bird : {message: sighting.errors.messages[:invalid]}
     end
 
+    def destroy
+        sighting = Sighting.find(params[:id])
+        sighting.destroy
+    end
+
     private
 
     def sightings_params
