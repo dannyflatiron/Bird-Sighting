@@ -10,12 +10,16 @@ class Sighting{
         const ul = document.querySelector(`div[data-id="${this.bird_id}"`)
         const li = document.createElement("li")
         const button = document.createElement("button")
-
+        // console.log("this", this)
         // li.setAttribute("id", this.id)
         li.innerHTML = `Sightings: ${this.date}`
         button.setAttribute("class", "remove")
         button.setAttribute("data-sighting-id", this.id) 
         button.innerHTML = "Remove"
+        button.addEventListener("click", (event) => {
+            event.preventDefault()
+            this.deleteSighting(event)
+        })
 
         li.appendChild(button)
         ul.appendChild(li)
@@ -66,8 +70,6 @@ class Sighting{
     }
 
     static createSighting(event, birdId) {
-        // console.log("event", event)
-        // console.log("birdId", birdId)
         const configObj = {
             method: "POST",
             headers: {
@@ -89,30 +91,20 @@ class Sighting{
             let newSighting = new Sighting(json)
             newSighting.renderBirdSightings()
         })
-        // let dateInput = document.getElementById("input-date-id").value
-        // let f = document.getElementById(`form[input-date-id=“${birdId}”]`)
-        // console.log("f", f)
-        // form.addEventListener('submit', function(event) {
-        //     event.preventDefault()
-        //     console.log("event", inputDate.value)
-        // })
-        // let form = document.getElementById("form-id")
-        // form.addEventListener("submit", function(event) {
-        //     event.preventDefault()
-        // }) 
-        // let sightingFormData = {
-        //     date: event.target[0].value
-        // }
-        // const configObj = {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application.json",
-        //         "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         date: ,
-        //         bird_id: 
-        //     })
-        // }
     }
+
+    deleteSighting(event) {
+        console.log("event", event)
+        // console.log("this", this.id)
+        const configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }
+        fetch(`http://localhost:3000/sightings/${this.id}`, configObj)
+        event.currentTarget.parentElement.remove()
+    }
+
 }
