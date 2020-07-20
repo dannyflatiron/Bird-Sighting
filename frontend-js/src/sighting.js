@@ -35,6 +35,7 @@ class Sighting{
         let hiddenTag = document.createElement("input")
         let submit = document.createElement("input")
 
+        
         form.setAttribute("class", "sightingForm")
         form.setAttribute("form-id", birdId)
         inputDate.setAttribute("input-date-id", birdId)
