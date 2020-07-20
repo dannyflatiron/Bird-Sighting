@@ -10,11 +10,10 @@ class Sighting{
         const li = document.createElement("li")
         const button = document.createElement("button")
 
-        li.innerHTML = `Sightings: ${this.date}`
-        button.innerHTML = "Remove"
-
         button.setAttribute("class", "remove")
         button.setAttribute("data-sighting-id", this.id) 
+        li.innerHTML = `Sightings: ${this.date}`
+        button.innerHTML = "Remove"
         button.addEventListener("click", (event) => {
             event.preventDefault()
             this.deleteSighting(event)
@@ -35,7 +34,7 @@ class Sighting{
         let hiddenTag = document.createElement("input")
         let submit = document.createElement("input")
 
-        
+
         form.setAttribute("class", "sightingForm")
         form.setAttribute("form-id", birdId)
         inputDate.setAttribute("input-date-id", birdId)
