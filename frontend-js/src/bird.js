@@ -18,11 +18,28 @@ class Bird {
         fetch("http://localhost:3000/birds")
         .then(response => response.json()) 
         .then(data => {
-            // data is an array have to use map to access each element
-            data.forEach(bird => {
+            console.log("data", data)
+            // console.log("sort", data.sort((a, b) => a.species - b.species))
+            data.sort(function(a, b) {
+                let nameA = a.name.toUpperCase()
+                let nameB = b.name.toUpperCase()
+                if (nameA < nameB) {
+                    return -1;
+                  }
+                  if (nameA > nameB) {
+                    return 1;
+                  }
+                
+                  // names must be equal
+                  return 0;
+            }).forEach(bird => {
                 let newBird = new Bird(bird)
                 newBird.addBirdToDom() 
             })
+
+ 
+            // data is an array have to use map to access each element
+
         })
     }
 
