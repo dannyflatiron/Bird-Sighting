@@ -13,12 +13,9 @@ class Bird {
     }
 
     static getAllBirds() {
-        // get all birds from api
-        // add birds to DOM
         fetch("http://localhost:3000/birds")
         .then(response => response.json()) 
         .then(data => {
-            // data is an array have to use map to access each element
             data.forEach(bird => {
                 let newBird = new Bird(bird)
                 newBird.addBirdToDom() 
@@ -26,9 +23,6 @@ class Bird {
         })
     }
 
-    // method to add a Bird instance from User submitted data to DOM
-    // certain HTML element (p tag) is being dynamically generated to hold Bird's name
-    // then p tag is being appended to appropriate div container
     addBirdToDom() {
         let dates = this.sightings.map(sighting => sighting.date)
         const div = document.createElement("div")

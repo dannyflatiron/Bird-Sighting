@@ -7,7 +7,6 @@ class SightingsController < ApplicationController
 
     def show
         sighting = Sighting.find(params[:id])
-        # render json: sighting, include: [:bird]
         render json: { id: sighting.id, date: sighting.date, bird: sighting.bird }
     end
 
@@ -18,10 +17,6 @@ class SightingsController < ApplicationController
         else
             render json: {message: sighting.errors.messages[:invalid]}
         end
-        # bird = Bird.find_by(id: params[:bird_id])
-        # bird.sightings.build(sightings_params)
-        # sighting = bird.sightings.last
-        # render json: bird.save ? bird : {message: sighting.errors.messages[:invalid]}
     end
 
     def destroy
