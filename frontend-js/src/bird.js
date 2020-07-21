@@ -21,14 +21,45 @@ class Bird {
                 newBird.addBirdToDom() 
             })
         })
+        let d = document.querySelector("h2")
+        
+        const buttonFilter = document.createElement("button")
+
+        buttonFilter.setAttribute("id", "filter-button")
+
+        buttonFilter.innerText = "Filter"
+
+
+        d.appendChild(buttonFilter)
+
+        buttonFilter.addEventListener("click", () =>  {
+            Bird.getFilteredBirds(event)
+        })
+    }
+
+    static getFilteredBirds() {
+        fetch("http://localhost:3000/birds")
+        .then(response => response.json()) 
+        .then(data => {
+            data.filter(bird => bird.name === "Black-Capped Chickadee").forEach(bird => {
+                let divCards = document.getElementsByClassName("card")
+                while(divCards.length > 0) {
+                    divCards[0].parentNode.removeChild(divCards[0])
+                }
+                let newBird = new Bird(bird)
+                newBird.addBirdToDom() 
+            })            
+        })
+
     }
 
     addBirdToDom() {
+
         let dates = this.sightings.map(sighting => sighting.date)
         const div = document.createElement("div")
         const pName = document.createElement("p")
-        const pSpecies = document.createElement("p")
         const button = document.createElement("button")
+        const pSpecies = document.createElement("p")
         const ul = document.createElement("ul")        
 
         div.setAttribute("class", "card")
