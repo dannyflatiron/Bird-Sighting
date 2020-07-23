@@ -38,17 +38,15 @@ class Bird {
     }
 
     static getFilteredBirds() {
+        main.innerHTML = ''
         fetch("http://localhost:3000/birds")
         .then(response => response.json()) 
         .then(data => {
             data.filter(bird => bird.name === "Black-Capped Chickadee").forEach(bird => {
-                let divCards = document.getElementsByClassName("card")
-                while(divCards.length > 0) {
-                    divCards[0].parentNode.removeChild(divCards[0])
-                }
+
                 let newBird = new Bird(bird)
                 newBird.addBirdToDom() 
-            })            
+            })       
         })
 
     }
