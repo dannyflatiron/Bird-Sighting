@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 class Bird {
+    static birds = []
     constructor(bird) {
         this.id = bird.id;
         this.name = bird.name; 
         this.species = bird.species;
         this.sightings = bird.sightings;
+        Bird.birds.push(this)
     }
+
 
     static getAllBirds() {
         fetch("http://localhost:3000/birds")
@@ -23,7 +26,7 @@ class Bird {
         })
         let d = document.querySelector("h2")
         
-        const buttonFilter = document.createElement("button")
+        const buttonFilter = document.createElement("button") 
 
         buttonFilter.setAttribute("id", "filter-button")
 
@@ -39,15 +42,10 @@ class Bird {
 
     static getFilteredBirds() {
         main.innerHTML = ''
-        fetch("http://localhost:3000/birds")
-        .then(response => response.json()) 
-        .then(data => {
-            data.filter(bird => bird.name === "Black-Capped Chickadee").forEach(bird => {
 
-                let newBird = new Bird(bird)
-                newBird.addBirdToDom() 
-            })       
-        })
+        Bird.birds.filter(bird => bird.name === "Black-Capped Chickadee").forEach(bird => {
+            bird.addBirdToDom() 
+        })       
 
     }
 
