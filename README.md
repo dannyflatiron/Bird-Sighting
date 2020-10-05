@@ -4,10 +4,6 @@
 BirdSpotter was born from an interest in finding extracurricular activities during the pandemic lockdown. Bird watching seemed to be surprinsingly enjoyable so I decided to build my first vanilla JS project to empower me to record my bird watching activity. [Demo video can be viewed here](https://www.youtube.com/watch?v=ODzlbJ79Mmw). 
 
 ---
-![BirdSighter Home](https://imgur.com/x2uMTHf)
----
-
----
 
 Some of the features of this app include:
 
@@ -16,7 +12,7 @@ Some of the features of this app include:
 * Database: `postgresql`
 * Javascript
 
-
+/Users/dannyreina/Development/code/Javascript Labs & Projects/Projects/mvp-spa-project/frontend-js/public/birdsighting_home.png
 ## Running it locally
 - Fork & Clone `git clone https://github.com/dannyflatiron/javascript-project.git`
 - cd into backend directory
