@@ -5,7 +5,7 @@ BirdSpotter was born from an interest in finding extracurricular activities duri
 
 ---
 ![BirdSighter Home](https://imgur.com/x2uMTHf)
-
+---
 
 ---
 
