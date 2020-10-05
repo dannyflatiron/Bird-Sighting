@@ -4,7 +4,7 @@
 BirdSpotter was born from an interest in finding extracurricular activities during the pandemic lockdown. Bird watching seemed to be surprinsingly enjoyable so I decided to build my first vanilla JS project to empower me to record my bird watching activity. [Demo video can be viewed here](https://www.youtube.com/watch?v=ODzlbJ79Mmw). 
 
 ---
-![BirdSighter Home](https://github.com/dannyflatiron/react-app/blob/master/frontend/public/birdsighting_home.png?raw=true)
+![BirdSighter Home](https://github.com/dannyflatiron/react-app/blob/master/frontend-js/public/birdsighting_home.png?raw=true)
 
 
 ---
