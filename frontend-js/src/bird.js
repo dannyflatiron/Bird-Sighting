@@ -32,8 +32,8 @@ class Bird {
 
         buttonFilter.innerText = "Filter"
 
-
-        d.appendChild(buttonFilter)
+        // Filter button needs enhancement
+        // d.appendChild(buttonFilter)
 
         buttonFilter.addEventListener("click", () =>  {
             Bird.getFilteredBirds(event)
